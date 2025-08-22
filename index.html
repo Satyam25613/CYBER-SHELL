@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER SHELL - Your Digital Bodyguard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #E2E8F0;
+        }
+        .hero-gradient {
+            background: radial-gradient(ellipse 80% 50% at 50% -20%,rgba(30, 64, 175, 0.3), hsla(0,0%,100%,0));
+        }
+        .feature-card, .founder-card, .story-card {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover, .founder-card:hover {
+            background-color: #1e293b;
+            border-color: #3b82f6;
+            transform: translateY(-5px);
+        }
+        .cta-button {
+            background: #2563eb;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(59, 130, 246, 0.6);
+        }
+        .animated-stat {
+            transition: all 0.5s ease-out;
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -31px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #334155;
+        }
+         .timeline-item:first-child::before {
+            top: 10px;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -38px;
+            top: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            border: 3px solid #0f172a;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-slate-900/70 backdrop-blur-lg border-b border-slate-800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="data:image/png;base64,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" alt="CYBER SHELL Logo" class="h-10">
+                <span class="text-xl font-bold tracking-wider text-white">CYBER SHELL</span>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center text-gray-300">
+                <a href="#story" class="hover:text-blue-400 transition">Our Story</a>
+                <a href="#features" class="hover:text-blue-400 transition">Features</a>
+                <a href="#vision" class="hover:text-blue-400 transition">Vision</a>
+                <a href="#founder" class="hover:text-blue-400 transition">Founder</a>
+                <a href="#cta" class="bg-slate-800 text-white font-semibold px-5 py-2 rounded-lg hover:bg-slate-700 transition">Join Beta</a>
+            </div>
+            <div class="md:hidden">
+                <!-- Mobile menu button can be added here -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative py-24 md:py-40 hero-gradient">
+            <div class="container mx-auto px-6 text-center z-10 fade-in-section">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white">Your Digital Bodyguard for a Safer India.</h1>
+                <p class="mt-6 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">In a world of digital threats, CYBER SHELL provides instant, AI-powered protection against online scams, fake news, and phishing links. Secure your digital life with one message.</p>
+                <div class="mt-10">
+                    <a href="#cta" class="cta-button text-white font-bold px-10 py-4 rounded-lg text-lg">
+                        Activate Your Shield on Telegram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Story Section -->
+        <section id="story" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center fade-in-section">
+                    <div class="story-card p-8 rounded-xl">
+                        <h2 class="text-3xl font-bold text-white leading-snug">This is not just one story. It happens every day.</h2>
+                        <p class="mt-4 text-slate-400">A woman received a WhatsApp message threatening to cut her electricity if she didn't pay ₹2,500. She clicked the link, entered her bank details, and within minutes, ₹45,000 was gone.</p>
+                        <p class="mt-4 text-slate-400">She was scared. The bank didn't help. The police couldn't track the fraud. Fake news, scam calls, and phishing links are growing fast, but people have no simple tool to check if something is real or fake.</p>
+                        <p class="mt-6 font-semibold text-blue-400">That's why we built CYBER SHELL.</p>
+                    </div>
+                    <div class="text-center">
+                         <div class="text-7xl font-extrabold text-red-500 animated-stat" data-target="22845">0</div>
+                         <p class="text-xl font-semibold text-white mt-2">Crores Lost to Scams in 2024</p>
+                         <div class="text-7xl font-extrabold text-red-500 mt-8 animated-stat" data-target="206">0%</div>
+                         <p class="text-xl font-semibold text-white mt-2">Increase in Financial Fraud YoY</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- How it Works Section -->
+        <section class="py-20 bg-black">
+            <div class="container mx-auto px-6 fade-in-section">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Simple, Instant, and Effective Protection.</h2>
+                    <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">We've made digital safety effortless. Our AI-powered chatbot works inside the apps you already use.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+                    <div class="text-center p-6 feature-card rounded-lg">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-blue-600/10 border-2 border-blue-600 rounded-full text-3xl font-bold text-blue-400">1</div>
+                        <h3 class="mt-6 text-2xl font-semibold text-white">Forward or Paste</h3>
+                        <p class="mt-2 text-slate-400">Encounter a suspicious link, message, or news article? Simply send it to our Telegram or WhatsApp bot.</p>
+                    </div>
+                    <div class="text-center p-6 feature-card rounded-lg">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-blue-600/10 border-2 border-blue-600 rounded-full text-3xl font-bold text-blue-400">2</div>
+                        <h3 class="mt-6 text-2xl font-semibold text-white">Instant Analysis</h3>
+                        <p class="mt-2 text-slate-400">Our engine cross-references the data with top security databases and AI models in real-time.</p>
+                    </div>
+                    <div class="text-center p-6 feature-card rounded-lg">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-blue-600/10 border-2 border-blue-600 rounded-full text-3xl font-bold text-blue-400">3</div>
+                        <h3 class="mt-6 text-2xl font-semibold text-white">Get a Clear Verdict</h3>
+                        <p class="mt-2 text-slate-400">Receive an immediate, easy-to-understand verdict: ✅ Safe, ❌ Unsafe, or ⚠️ Unverified, before you click.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20">
+            <div class="container mx-auto px-6 fade-in-section">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">A Comprehensive Digital Shield.</h2>
+                    <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">CYBER SHELL provides multi-layered protection against a wide range of digital threats.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="feature-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-white">Instant Link & Message Checking</h3>
+                        <p class="mt-4 text-slate-300">Our core feature. We analyze URLs for phishing, malware, and scam indicators using a combination of Google Safe Browsing, VirusTotal, and our own AI pattern detection.</p>
+                    </div>
+                    <div class="feature-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-white">AI-Powered Fake News Verification</h3>
+                        <p class="mt-4 text-slate-300">Combat misinformation. We check forwarded news against credible fact-checking APIs like Alt News and BOOM Live, supplemented by our growing community-flagged database.</p>
+                    </div>
+                    <div class="feature-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-white">Community-Driven Scam Reporting</h3>
+                        <p class="mt-4 text-slate-300">Leverage the power of the community. Check suspicious phone numbers against a user-generated database of reported spam and fraud, similar to Truecaller but for all digital threats.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="vision" class="py-20 bg-black">
+            <div class="container mx-auto px-6 fade-in-section">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Our Roadmap to a Safer Digital India.</h2>
+                    <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">Our chatbot MVP is just the first step. Our long-term vision is to create a complete digital safety ecosystem.</p>
+                </div>
+                <div class="max-w-2xl mx-auto relative">
+                    <div class="timeline-item relative pl-8 pb-12">
+                        <div class="timeline-dot"></div>
+                        <h4 class="text-xl font-semibold text-white">Phase 1: Foundation (Now)</h4>
+                        <p class="text-slate-400 mt-1">Launch and grow our user base on Telegram & WhatsApp, validating our core technology and gathering critical threat data.</p>
+                    </div>
+                    <div class="timeline-item relative pl-8 pb-12">
+                        <div class="timeline-dot"></div>
+                        <h4 class="text-xl font-semibold text-white">Phase 2: Empowerment</h4>
+                        <p class="text-slate-400 mt-1">Launch a standalone mobile app with premium features and a Digital Literacy Engine to educate and empower users.</p>
+                    </div>
+                     <div class="timeline-item relative pl-8 pb-12">
+                        <div class="timeline-dot"></div>
+                        <h4 class="text-xl font-semibold text-white">Phase 3: Ecosystem</h4>
+                        <p class="text-slate-400 mt-1">Develop a Public Scam Dashboard to serve as a national alert system and launch Enterprise APIs for B2B clients.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Founder Section -->
+<section id="founder" class="py-20">
+  <div class="container mx-auto px-6 fade-in-section">
+    <div class="founder-card max-w-4xl mx-auto p-8 md:p-12 rounded-xl md:flex items-center gap-12 bg-slate-800 shadow-lg">
+      
+      <!-- Founder Image -->
+      <div class="md:w-1/3 text-center">
+        <img 
+          src="https://media.licdn.com/dms/image/v2/D4D03AQG8xLkRgTu38A/profile-displayphoto-shrink_400_400/B4DZaPdOGKH0Ag-/0/1746163527288?e=1758758400&v=beta&t=AMrPeLrJA-fyFHTSkgdA34CZR-Fee1t7HmJIHot8520" 
+          alt="Founder Photo" 
+          class="w-48 h-48 rounded-full object-cover mx-auto"
+        >
+      </div>
+      
+      <!-- Founder Text -->
+      <div class="md:w-2/3 mt-8 md:mt-0">
+        <h2 class="text-3xl font-bold text-white">Meet the Founder</h2>
+        <h3 class="text-2xl font-semibold text-blue-400 mt-1">Satyam Singh</h3>
+        <p class="text-slate-300 mt-4">
+          Currently pursuing a BCA in Cybersecurity and Cloud Computing at Sri Balaji University, Pune, 
+          Satyam is a passionate technologist and aspiring entrepreneur. He witnessed the devastating 
+          impact of online fraud on his community and was driven to create a simple, accessible solution.
+        </p>
+        <p class="text-slate-300 mt-4">
+          "I believe technology should protect people, not exploit them. CYBER SHELL was born from a desire 
+          to empower every Indian with the tools they need to navigate the digital world safely. We're not just 
+          building an app; we're building a movement towards a more secure digital future for everyone."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <!-- CTA Section -->
+        <section id="cta" class="py-24 bg-black">
+            <div class="container mx-auto px-6 text-center fade-in-section">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white">Take Control of Your Digital Safety. Today.</h2>
+                <p class="mt-6 text-lg text-slate-300 max-w-2xl mx-auto">Join thousands of early users who are protecting themselves and their families from online threats. Our Telegram bot is free, fast, and easy to use.</p>
+                <div class="mt-10">
+                    <a href="https://t.me/your_telegram_bot_username" target="_blank" class="cta-button text-white font-bold px-10 py-4 rounded-lg text-lg inline-block">
+                        Activate Your Digital Shield on Telegram
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 border-t border-slate-800">
+        <div class="container mx-auto px-6 py-10">
+            <div class="md:flex md:justify-between items-center text-center md:text-left">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center justify-center md:justify-start space-x-4">
+                         <img src="data:image/png;base64,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" alt="CYBER SHELL Logo" class="h-8">
+                        <span class="text-lg font-semibold text-white">CYBER SHELL</span>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-slate-300 font-semibold">Founder - Satyam Singh</p>
+                    <a href="mailto:SATYYYY01@GMAIL.COM" class="text-slate-400 hover:text-blue-500 transition">SATYYYY01@GMAIL.COM</a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-slate-800 pt-6 text-center text-slate-500 text-sm">
+                <p>&copy; 2025 CYBER SHELL. All rights reserved. Designed for a safer digital India.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedStats = document.querySelectorAll('.animated-stat');
+            const sections = document.querySelectorAll('.fade-in-section');
+
+            const animateStat = (element) => {
+                const target = +element.getAttribute('data-target');
+                const duration = 1500;
+                const stepTime = 20;
+                const steps = duration / stepTime;
+                const increment = target / steps;
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        current = target;
+                    }
+                    element.innerText = Math.floor(current).toLocaleString('en-IN');
+                }, stepTime);
+            };
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        if (entry.target.classList.contains('animated-stat')) {
+                            animateStat(entry.target);
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            animatedStats.forEach(stat => observer.observe(stat));
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+
+</body>
+</html>
