@@ -1,544 +1,388 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBER SHELL - AI-Powered Protection for India</title>
-    <meta name="description" content="CYBER SHELL is an AI-powered digital shield protecting Indians from fake news, phishing links, scam calls, and online fraud. Simple, instant, and free.">
-    
-    <!-- Tailwind CSS CDN -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CYBER SHELL - Your Digital Guardian</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.corenexis.com/view/7295311168" />
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Custom Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
-        /* General Site Styles */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #101010; /* Sleek Black */
-            color: #E0E0E0;
-        }
-        .accent-blue {
-            color: #64ffda;
-        }
-        .btn-primary {
-            @apply bg-[#64ffda] text-[#101010] font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105;
-        }
-        .btn-secondary {
-            @apply border-2 border-[#64ffda] text-[#64ffda] font-bold py-3 px-8 rounded-md hover:bg-[#64ffda] hover:text-[#101010] transition-all duration-300 transform hover:scale-105;
-        }
-        .section-heading {
-            @apply text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 text-white;
-        }
-        .section-subheading {
-            @apply text-base sm:text-lg text-center text-gray-400 max-w-3xl mx-auto mb-12 sm:mb-16;
-        }
-        .glass-card {
-            background: rgba(24, 24, 24, 0.6); /* Darker, classier glass */
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(100, 255, 218, 0.15);
-            border-radius: 0.75rem;
-            transition: all 0.3s ease;
-        }
-        .glass-card:hover {
-            border-color: rgba(100, 255, 218, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        .darker-section {
-            background-color: #181818;
-        }
-        /* Animation for elements on scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #050505;
+        color: #fff;
+        overflow-x: hidden;
+      }
 
-        /* Interactive Bot Styles */
-        .phone-mockup {
-            background: #020617;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.05);
-        }
-        .chat-header {
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(12px);
-        }
-        .chat-bubble-user {
-            background-image: linear-gradient(to right, #2563eb, #3b82f6);
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-        .chat-bubble-bot {
-            background-color: #334155;
-            color: #f1f5f9;
-            border-bottom-left-radius: 4px;
-        }
-        .chat-container::-webkit-scrollbar {
-            width: 6px;
-        }
-        .chat-container::-webkit-scrollbar-thumb {
-            background-color: #475569;
-            border-radius: 20px;
-        }
-        .suggestion-chip {
-            background-color: #1e293b;
-            color: #94a3b8;
-            border: 1px solid #334155;
-            transition: all 0.2s ease-in-out;
-        }
-        .suggestion-chip:hover {
-            background-color: #334155;
-            border-color: #4f46e5;
-            color: #e0e7ff;
-        }
-        .typing-indicator span {
-            animation: bounce 1.4s infinite ease-in-out both;
-        }
-        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1.0); }
-        }
+      /* Hero Section Background Glow */
+      .hero-bg-glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 70% 30%, rgba(0, 255, 128, 0.08) 0%, rgba(0, 0, 0, 0) 60%),
+                    radial-gradient(circle at 20% 80%, rgba(0, 191, 255, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
+        background-size: 200% 200%;
+        animation: hero-gradient-anim 18s ease-in-out infinite alternate;
+      }
+      @keyframes hero-gradient-anim {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* CTA Button Glow Effect */
+      .cta-glow-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        border: 2px solid transparent;
+      }
+      .cta-glow-btn:hover {
+        transform: translateY(-2px);
+      }
+      .cta-glow-btn::before {
+        content: '';
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: conic-gradient(from 0deg, #00bfff, #00ff80, #00bfff);
+        animation: cta-rotate 3s linear infinite;
+        z-index: -1;
+        opacity: 0.8;
+      }
+      .cta-glow-btn::after {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background-color: #050505;
+        border-radius: 9999px;
+        z-index: 1;
+      }
+      .cta-glow-btn span {
+        position: relative;
+        z-index: 2;
+      }
+
+      @keyframes cta-rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      /* Card Glow and Hover */
+      .card-glow {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      .card-glow:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 255, 128, 0.15), 0 5px 10px rgba(0, 191, 255, 0.1);
+      }
+      .card-glow::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+        padding: 2px;
+        background: conic-gradient(from 180deg, #00bfff, #00ff80, #00bfff);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      .card-glow:hover::before {
+        opacity: 1;
+      }
+
+      /* Staggered Scroll Animations */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+      .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+      .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+      .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+
+      /* Navbar sticky */
+      .navbar-scrolled {
+        background-color: rgba(5, 5, 5, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Smooth separator */
+      .smooth-divider {
+        height: 1px;
+        background: linear-gradient(to right, rgba(0, 191, 255, 0.2), rgba(0, 255, 128, 0.2), rgba(0, 191, 255, 0.2));
+        margin: 4rem auto;
+      }
     </style>
-</head>
-<body class="antialiased">
-
-    <!-- =========== Header / Navigation =========== -->
-    <header class="bg-[#101010]/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-800">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-3">
-                <img src="https://i.ibb.co/WpDVFpj6/Black-White-Minimalist-Cybersecurity-Analyst-Logo-20250823-084139-0000.png" alt="CYBER SHELL Logo" class="h-10 w-10">
-                <span class="font-bold text-2xl text-white">CYBER SHELL</span>
-            </a>
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 items-center text-gray-300">
-                <a href="#problem" class="hover:text-[#64ffda] transition-colors">The Problem</a>
-                <a href="#solution" class="hover:text-[#64ffda] transition-colors">Our Solution</a>
-                <a href="#demo" class="hover:text-[#64ffda] transition-colors">Demo</a>
-                <a href="#about" class="hover:text-[#64ffda] transition-colors">About Us</a>
-                <a href="#faq" class="hover:text-[#64ffda] transition-colors">FAQ</a>
-            </div>
-            <a href="#cta" class="hidden md:block btn-secondary !py-2 !px-5">Get Protected</a>
-
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
+  </head>
+  <body class="bg-black text-white">
+    <!-- Header / Navbar -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300">
+      <nav class="container mx-auto flex items-center justify-between px-6">
+        <a href="#" class="flex items-center space-x-3">
+          <img src="https://cdn.corenexis.com/view/7295311168" alt="CYBER SHELL Logo" class="h-8 md:h-9 rounded-md" />
+          <span class="text-xl md:text-2xl font-bold text-white">CYBER SHELL</span>
+        </a>
+        <div class="hidden md:flex space-x-8">
+          <a href="#home" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Home</a>
+          <a href="#features" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Features</a>
+          <a href="#mission" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Mission</a>
+          <a href="#early-access" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Early Access</a>
+          <a href="#founder" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Founder</a>
+          <a href="#contact" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Contact</a>
+        </div>
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-gray-300 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-black/90 backdrop-blur-lg py-4 transition-all duration-300 ease-in-out">
+        <div class="flex flex-col items-center space-y-4">
+          <a href="#home" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Home</a>
+          <a href="#features" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Features</a>
+          <a href="#mission" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Mission</a>
+          <a href="#early-access" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Early Access</a>
+          <a href="#founder" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Founder</a>
+          <a href="#contact" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Contact</a>
+        </div>
+      </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-[#101010]/95 backdrop-blur-lg z-50">
-        <div class="flex justify-end p-6">
-            <button id="close-menu-button">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-        </div>
-        <div class="flex flex-col items-center justify-center h-full -mt-16 space-y-8">
-            <a href="#problem" class="text-3xl font-bold text-gray-300 hover:text-[#64ffda] transition-colors mobile-menu-link">The Problem</a>
-            <a href="#solution" class="text-3xl font-bold text-gray-300 hover:text-[#64ffda] transition-colors mobile-menu-link">Our Solution</a>
-            <a href="#demo" class="text-3xl font-bold text-gray-300 hover:text-[#64ffda] transition-colors mobile-menu-link">Demo</a>
-            <a href="#about" class="text-3xl font-bold text-gray-300 hover:text-[#64ffda] transition-colors mobile-menu-link">About Us</a>
-            <a href="#faq" class="text-3xl font-bold text-gray-300 hover:text-[#64ffda] transition-colors mobile-menu-link">FAQ</a>
-            <a href="#cta" class="btn-primary !text-2xl mt-8 mobile-menu-link">Get Protected</a>
-        </div>
-    </div>
-
-
     <main>
-        <!-- =========== Hero Section =========== -->
-        <section class="min-h-screen flex items-center justify-center text-center px-6 py-20 relative overflow-hidden">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(100,255,218,0.05)_0%,_rgba(100,255,218,0)_30%)]"></div>
-            
-            <div class="max-w-4xl mx-auto z-10">
-                <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-tight mb-4">
-                    The Digital Shield <br class="hidden md:block"/> Protecting <span class="accent-blue">Every Indian</span>.
-                </h1>
-                <p class="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-                    Instant, AI-powered protection from online scams, fake news, and phishing links. Simple, fast, and free.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a href="#" class="btn-primary w-full sm:w-auto">Try on Telegram →</a>
-                    <a href="#" class="btn-secondary w-full sm:w-auto">Join App Waitlist</a>
-                </div>
+      <!-- Hero Section -->
+      <section id="home" class="relative min-h-screen flex items-center justify-center text-center px-4 py-24 overflow-hidden">
+        <div class="hero-bg-glow"></div>
+        <div class="relative z-10 max-w-5xl mx-auto">
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400 mb-6 animate-on-scroll" data-animation-target>
+            Your AI-Powered Digital Guardian
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 animate-on-scroll" data-animation-target>
+            Protecting you from fake news, phishing links & scam calls, and making the digital world safer for everyone.
+          </p>
+          <a href="https://satyam25613.github.io/CYBERSHELL---WM/" class="cta-glow-btn inline-flex items-center justify-center font-semibold py-4 px-10 rounded-full text-lg animate-on-scroll" data-animation-target>
+            <span>Try Free Tier</span>
+          </a>
+        </div>
+      </section>
+      
+      <!-- Features Section -->
+      <section id="features" class="py-20 px-4">
+        <div class="container mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll" data-animation-target>Why Choose CYBER SHELL?</h2>
+          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="bg-[#1a1a1a] rounded-2xl p-8 card-glow animate-on-scroll" data-animation-target>
+              <div class="text-5xl mb-4 text-green-400">📰</div>
+              <h3 class="text-xl font-semibold mb-2">Fake News Verifier</h3>
+              <p class="text-gray-400">Our AI analyzes articles and social media posts to detect misinformation, helping you stay informed and safe.</p>
             </div>
-        </section>
+            <div class="bg-[#1a1a1a] rounded-2xl p-8 card-glow animate-on-scroll" data-animation-target>
+              <div class="text-5xl mb-4 text-blue-400">🔗</div>
+              <h3 class="text-xl font-semibold mb-2">Phishing Link Checker</h3>
+              <p class="text-gray-400">Before you click, our system checks links against a vast database of known scams, protecting your personal data.</p>
+            </div>
+            <div class="bg-[#1a1a1a] rounded-2xl p-8 card-glow animate-on-scroll" data-animation-target>
+              <div class="text-5xl mb-4 text-green-400">📞</div>
+              <h3 class="text-xl font-semibold mb-2">Scam Call Detector</h3>
+              <p class="text-gray-400">Identify and block fraudulent calls with real-time analysis, so you never fall victim to a phone scam again.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- =========== As Seen In / Traction Section =========== -->
-        <section class="py-12 darker-section">
-            <div class="container mx-auto px-6">
-                <div class="flex justify-center items-center gap-8 md:gap-16 flex-wrap">
-                    <div class="text-center opacity-80 transition-opacity hover:opacity-100">
-                        <p class="text-sm text-gray-400 font-bold uppercase tracking-wider">Presented At</p>
-                        <p class="text-xl font-bold text-white">T-Hub</p>
-                    </div>
-                    <div class="text-center opacity-80 transition-opacity hover:opacity-100">
-                        <p class="text-sm text-gray-400 font-bold uppercase tracking-wider">Supported By</p>
-                        <p class="text-xl font-bold text-white">Sri Balaji University, Pune</p>
-                    </div>
-                    <div class="text-center opacity-80 transition-opacity hover:opacity-100">
-                        <p class="text-sm text-gray-400 font-bold uppercase tracking-wider">Early Users On</p>
-                        <p class="text-xl font-bold text-white">Telegram MVP</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="smooth-divider container"></div>
 
-        <!-- =========== The Problem Section =========== -->
-        <section id="problem" class="py-20 px-6">
-            <div class="container mx-auto">
-                <h2 class="section-heading reveal">India's Digital Crisis is Real.</h2>
-                <p class="section-subheading reveal">
-                    From fake WhatsApp forwards to OTP scams, millions of Indians lose money and peace of mind every year. We built a simple shield for a complex problem.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="glass-card p-8 reveal">
-                        <svg class="w-16 h-16 mx-auto mb-4 accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                        </svg>
-                        <h3 class="text-xl font-bold text-white mb-2">The Social "Infodemic"</h3>
-                        <p class="text-gray-400">Misinformation spreads 6x faster than truth, creating confusion and manipulating public opinion.</p>
-                    </div>
-                    <div class="glass-card p-8 reveal" style="transition-delay: 0.2s;">
-                        <svg class="w-16 h-16 mx-auto mb-4 accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                           <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                        </svg>
-                        <h3 class="text-xl font-bold text-white mb-2">Phishing & Link Scams</h3>
-                        <p class="text-gray-400">One wrong click on a malicious SMS or email link can compromise your bank account and personal data in seconds.</p>
-                    </div>
-                    <div class="glass-card p-8 reveal" style="transition-delay: 0.4s;">
-                        <svg class="w-16 h-16 mx-auto mb-4 accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                           <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                        </svg>
-                        <h3 class="text-xl font-bold text-white mb-2">Constant Scam Calls</h3>
-                        <p class="text-gray-400">Fraudsters impersonating banks and government officials target innocent people with sophisticated scams.</p>
-                    </div>
-                </div>
+      <!-- Mission & Goals -->
+      <section id="mission" class="py-20 px-4">
+        <div class="container mx-auto text-center">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll" data-animation-target>Our Mission & Vision</h2>
+            <p class="text-lg md:text-xl text-gray-300 mb-12 animate-on-scroll" data-animation-target>
+              "To make India digitally safe by empowering every citizen with AI-driven protection, ensuring a secure and trustworthy online ecosystem."
+            </p>
+            <h3 class="text-2xl font-bold mb-6 text-blue-400 animate-on-scroll" data-animation-target>Long-Term Goals</h3>
+            <div class="grid md:grid-cols-2 gap-8 text-left">
+              <div class="p-6 bg-[#1a1a1a] rounded-lg animate-on-scroll" data-animation-target>
+                <p class="text-green-400 text-lg font-semibold mb-2">AI WhatsApp Bot</p>
+                <p class="text-gray-400">A dedicated bot for citizens to instantly check facts, links, and numbers, right from their daily conversations.</p>
+              </div>
+              <div class="p-6 bg-[#1a1a1a] rounded-lg animate-on-scroll" data-animation-target>
+                <p class="text-green-400 text-lg font-semibold mb-2">Scam Analytics Dashboard</p>
+                <p class="text-gray-400">Providing real-time insights into new and emerging scams across the country, empowering proactive defense.</p>
+              </div>
+              <div class="p-6 bg-[#1a1a1a] rounded-lg animate-on-scroll" data-animation-target>
+                <p class="text-green-400 text-lg font-semibold mb-2">B2B APIs</p>
+                <p class="text-gray-400">Offering our core fraud detection technology to businesses to protect their customers at scale.</p>
+              </div>
+              <div class="p-6 bg-[#1a1a1a] rounded-lg animate-on-scroll" data-animation-target>
+                <p class="text-green-400 text-lg font-semibold mb-2">Partnerships</p>
+                <p class="text-gray-400">Collaborating with Government & NGOs to expand our reach and impact nationwide, closing the digital safety gap.</p>
+              </div>
             </div>
-        </section>
-        
-        <!-- =========== Combined Solution Section =========== -->
-        <section id="solution" class="py-20 px-6 darker-section">
-            <div class="container mx-auto">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                
-                    <div class="reveal">
-                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Advanced Tech,<br><span class="accent-blue">Simple Protection.</span></h2>
-                        <p class="text-lg text-gray-400 mb-8">
-                            CYBER SHELL combines the world's best security technologies with community intelligence to provide a robust, simple, and accessible defense system for every Indian.
-                        </p>
-                        
-                        <div class="space-y-4">
-                            <h3 class="text-xl font-bold text-white mt-6 border-b border-gray-700 pb-2">Our Protection Engine:</h3>
-                            <div class="flex items-start space-x-3">
-                                <svg class="w-6 h-6 accent-blue flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <p><strong class="text-gray-200">Proprietary AI Engine:</strong> Trained to detect scams in Indian languages.</p>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <svg class="w-6 h-6 accent-blue flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <p><strong class="text-gray-200">Trusted Security APIs:</strong> Integrated with Google Safe Browsing & VirusTotal.</p>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <svg class="w-6 h-6 accent-blue flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <p><strong class="text-gray-200">Community Intelligence:</strong> Crowdsourced data to block new scams faster.</p>
-                            </div>
+          </div>
+        </div>
+      </section>
 
-                            <h3 class="text-xl font-bold text-white pt-6 border-b border-gray-700 pb-2">Built For:</h3>
-                             <div class="flex items-start space-x-3">
-                                <svg class="w-6 h-6 accent-blue flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <p><strong class="text-gray-200">Families & Senior Citizens:</strong> An easy-to-use interface to verify threats.</p>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                               <svg class="w-6 h-6 accent-blue flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <p><strong class="text-gray-200">Young & First-Time Users:</strong> Empowering safe and confident internet navigation.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="smooth-divider container"></div>
 
-        <!-- =========== Interactive Demo Section =========== -->
-        <section id="demo" class="py-20 px-6">
-            <div class="container mx-auto">
-                <h2 class="section-heading reveal">See It In Action: Try Our Live Demo</h2>
-                <p class="section-subheading reveal">
-                    Experience the power of CYBER SHELL firsthand. Use this interactive prototype to see how our bot analyzes and responds to threats in real-time.
-                </p>
-                <div class="w-full max-w-sm mx-auto reveal">
-                    <!-- Phone Mockup -->
-                    <div class="phone-mockup border-8 border-gray-900 rounded-[2.5rem] shadow-2xl overflow-hidden">
-                        <div class="h-[700px] sm:h-[800px] bg-slate-900 flex flex-col">
-                            <!-- Header -->
-                            <div class="chat-header p-3 flex items-center space-x-3 border-b border-slate-700 shadow-lg z-10">
-                                <img src="https://i.ibb.co/WpDVFpj6/Black-White-Minimalist-Cybersecurity-Analyst-Logo-20250823-084139-0000.png" alt="CYBER SHELL Bot Logo" class="h-10 w-10 rounded-full">
-                                <div>
-                                    <p class="font-bold text-white">CYBER SHELL</p>
-                                    <p class="text-xs text-emerald-400">online</p>
-                                </div>
-                            </div>
-                            <!-- Chat Area -->
-                            <div id="chat-area" class="flex-grow p-4 space-y-4 overflow-y-auto chat-container">
-                                <!-- Messages will be injected here by JS -->
-                            </div>
-                            <!-- Typing indicator -->
-                            <div id="typing-indicator" class="px-4 pb-2 hidden">
-                                <div class="chat-bubble-bot self-start inline-flex items-center space-x-1 p-3 rounded-xl">
-                                    <span class="w-2 h-2 bg-slate-400 rounded-full"></span>
-                                    <span class="w-2 h-2 bg-slate-400 rounded-full"></span>
-                                    <span class="w-2 h-2 bg-slate-400 rounded-full"></span>
-                                </div>
-                            </div>
-                            <!-- Suggestion Chips -->
-                            <div id="suggestion-chips" class="p-2 grid grid-cols-2 gap-2 border-t border-slate-700/50">
-                                <!-- Chips will be injected here by JS -->
-                            </div>
-                            <!-- Input Area -->
-                            <div class="p-3 bg-slate-800/50 border-t border-slate-700/50">
-                                <div class="flex items-center bg-slate-700 rounded-full">
-                                    <input type="text" id="user-input" placeholder="Paste link or message..." class="w-full bg-transparent p-3 text-slate-200 focus:outline-none placeholder-slate-500">
-                                    <button id="send-button" class="p-3 text-blue-400 hover:text-blue-300 transition">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <!-- Early Access Banner -->
+      <section id="early-access" class="py-20 px-4">
+        <div class="container mx-auto text-center bg-gray-900 rounded-3xl p-8 md:p-16 border border-gray-800 animate-on-scroll" data-animation-target>
+          <h2 class="text-2xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">
+            Be the first to try CYBER SHELL
+          </h2>
+          <p class="text-md md:text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+            Sign up for our Free Tier now and join our mission to create a safer digital world.
+          </p>
+          <a href="https://satyam25613.github.io/CYBERSHELL---WM/" class="cta-glow-btn inline-flex items-center justify-center font-semibold py-4 px-10 rounded-full text-lg">
+            <span>Get Early Access</span>
+          </a>
+        </div>
+      </section>
 
-        <!-- =========== Meet the Founder Section =========== -->
-        <section id="about" class="py-20 px-6 darker-section">
-            <div class="container mx-auto">
-                 <div class="text-center mb-12 reveal">
-                     <h2 class="section-heading">Meet the Founder</h2>
-                 </div>
-                 <div class="grid lg:grid-cols-3 gap-12 items-center">
-                    <div class="lg:col-span-1 reveal">
-                        <div class="p-1.5 border-2 border-[#64ffda] rounded-lg shadow-2xl max-w-xs mx-auto">
-                            <img src="https://i.ibb.co/vvxktM7q/Untitled-Instagram-Post-4-5-20250825-022145-0000.png" alt="Founder Satyam Singh Rajput" class="rounded-lg w-full">
-                        </div>
-                    </div>
-                    <div class="lg:col-span-2 reveal">
-                        <h3 class="text-3xl font-bold text-white mb-4">Satyam Singh</h3>
-                         <p class="text-lg text-gray-300 mb-6">
-                            Currently pursuing a BCA in Cybersecurity and Cloud Computing at Sri Balaji University, Pune, Satyam is a passionate technologist and aspiring entrepreneur. He witnessed the devastating impact of online fraud on his community and was driven to create a simple, accessible solution.
-                         </p>
-                         <blockquote class="border-l-4 border-[#64ffda] pl-6 italic text-gray-300 text-lg">
-                             "I believe technology should protect people, not exploit them. CYBER SHELL was born from a desire to empower every Indian with the tools they need to navigate the digital world safely. We're not just building an app; we're building a movement towards a more secure digital future for everyone."
-                         </blockquote>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- =========== FAQ Section =========== -->
-        <section id="faq" class="py-20 px-6">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="section-heading reveal">Frequently Asked Questions</h2>
-                <div class="space-y-6 mt-12">
-                    <div class="glass-card p-6 reveal">
-                        <h3 class="font-bold text-lg text-white">Is CYBER SHELL completely free to use?</h3>
-                        <p class="text-gray-400 mt-2">Yes, our core features—link, message, and number checking—are and will always be free for individual citizens. We plan to offer advanced features for businesses and institutions in the future.</p>
-                    </div>
-                    <div class="glass-card p-6 reveal">
-                        <h3 class="font-bold text-lg text-white">How does the AI know if something is a scam?</h3>
-                        <p class="text-gray-400 mt-2">Our AI is trained on millions of examples of fraudulent messages and links. It learns to recognize patterns, keywords, and structures commonly used in scams, even in regional Indian languages.</p>
-                    </div>
-                    <div class="glass-card p-6 reveal">
-                        <h3 class="font-bold text-lg text-white">Do you read or store my personal messages?</h3>
-                        <p class="text-gray-400 mt-2">No. Your privacy is our top priority. When you forward a message, our system only analyzes the content for threats. We do not store personal conversations or link them to your identity.</p>
-                    </div>
-                    <div class="glass-card p-6 reveal">
-                        <h3 class="font-bold text-lg text-white">What platforms can I use CYBER SHELL on?</h3>
-                        <p class="text-gray-400 mt-2">Currently, our MVP is live on Telegram. We are actively developing a dedicated mobile app for both Android and iOS, as well as a WhatsApp bot for even easier access.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="smooth-divider container"></div>
+      
+      <!-- Founder Section -->
+      <section id="founder" class="py-20 px-4">
+        <div class="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 max-w-5xl">
+          <div class="w-full lg:w-1/3 flex justify-center animate-on-scroll" data-animation-target>
+            <img src="https://i.ibb.co/HTJfnjw1/Untitled-Instagram-Post-4-5-20250825-022145-0000.png" alt="Satyam Singh, Founder" class="rounded-full w-56 h-56 object-cover shadow-2xl border-4 border-green-400" />
+          </div>
+          <div class="w-full lg:w-2/3 text-center lg:text-left animate-on-scroll" data-animation-target>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet the Founder</h2>
+            <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+              I’m Satyam Singh, Founder & CEO of CYBER SHELL, currently pursuing my studies at Sri Balaji University, Pune. My journey began with a vision to combat digital threats and make the online world safer for everyone. I am proud to have been selected by T-Hub Hyderabad for early-stage innovation, a significant validation of our mission and its potential to create widespread impact.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <!-- =========== CTA Section =========== -->
-        <section id="cta" class="py-24 px-6 text-center darker-section">
-            <div class="container mx-auto">
-                <h2 class="section-heading reveal">Join Us in Making the Internet <span class="accent-blue">Safer for India.</span></h2>
-                <div class="max-w-3xl mx-auto">
-                    <div class="glass-card p-8 reveal">
-                        <h3 class="text-2xl font-bold text-white mb-3">Get Your Free Digital Shield Today</h3>
-                        <p class="text-gray-300 mb-6">Ready to protect yourself and your family? Get instant, real-time protection from scams and fake news today. It's simple, fast, and completely free.</p>
-                        <a href="#" class="btn-primary">Try CYBER SHELL on Telegram →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="smooth-divider container"></div>
+
+      <!-- Recognition Section -->
+      <section class="py-12 px-4 text-center">
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-400 mb-8 animate-on-scroll" data-animation-target>Our Recognition</h3>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+          <div class="flex items-center space-x-4 animate-on-scroll" data-animation-target>
+            <span class="text-xl md:text-2xl text-blue-400 font-semibold">Sri Balaji University, Pune</span>
+          </div>
+          <div class="flex items-center space-x-4 animate-on-scroll" data-animation-target>
+            <span class="text-xl md:text-2xl text-green-400 font-semibold">T-Hub Hyderabad</span>
+            <span class="text-sm text-gray-400">(India’s biggest startup incubator)</span>
+          </div>
+        </div>
+      </section>
+
     </main>
 
-    <!-- =========== Footer Section =========== -->
-    <footer class="bg-[#101010] border-t-2 border-gray-800">
-        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
-            <a href="#" class="flex items-center justify-center space-x-2 mb-4">
-                <img src="https://i.ibb.co/WpDVFpj6/Black-White-Minimalist-Cybersecurity-Analyst-Logo-20250823-084139-0000.png" alt="CYBER SHELL Logo" class="h-8 w-8">
-                <span class="font-bold text-lg text-white">CYBER SHELL</span>
-            </a>
-            <p class="mb-4">AI-Powered Digital Safety for India.</p>
-            <div class="text-sm">
-                <p>Contact: <a href="mailto:satyam25613@gmail.com" class="hover:text-[#64ffda] transition-colors">satyam25613@gmail.com</a> | Pune, Maharashtra, India</p>
-                <p class="mt-2">© 2025 CYBER SHELL. All Rights Reserved.</p>
-            </div>
+    <!-- Footer -->
+    <footer id="contact" class="bg-[#111] py-12 px-4 border-t border-gray-800">
+      <div class="container mx-auto flex flex-col md:flex-row justify-between items-start text-center md:text-left">
+        <div class="mb-8 md:mb-0">
+          <a href="#" class="flex items-center justify-center md:justify-start space-x-3 mb-4">
+            <img src="https://cdn.corenexis.com/view/7295311168" alt="CYBER SHELL Logo" class="h-8 rounded-md" />
+            <span class="text-lg font-bold">CYBER SHELL</span>
+          </a>
+          <p class="text-gray-400 text-sm max-w-xs">Empowering citizens with AI-driven protection against digital threats. Making India digitally safe.</p>
         </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 w-full md:w-auto text-left">
+          <div>
+            <h4 class="font-semibold text-white mb-3">Quick Links</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+              <li><a href="#mission" class="text-gray-400 hover:text-white transition-colors">Our Mission</a></li>
+              <li><a href="#founder" class="text-gray-400 hover:text-white transition-colors">Founder</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-3">Resources</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-3">Connect</h4>
+            <div class="flex justify-start space-x-4 text-gray-400">
+              <a href="https://linkedin.com" target="_blank" class="hover:text-blue-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.765s.784-1.764 1.75-1.764 1.75.79 1.75 1.764c0 .975-.784 1.765-1.75 1.765zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+              <a href="https://twitter.com" target="_blank" class="hover:text-blue-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.593 0-6.495 2.902-6.495 6.495 0 .509.057 1.006.169 1.488-5.39-2.7-10.191-5.7-13.407-10.742-.563.961-.888 2.083-.888 3.284 0 2.26.96 4.254 2.451 5.424-2.24-.072-4.103-.728-5.83-1.609v.081c0 3.195 2.274 5.86 5.293 6.471-.52.141-1.07.21-1.637.21-.4 0-.79-.045-1.171-.115.845 2.62 3.288 4.524 6.173 4.576-2.285 1.79-5.163 2.864-8.283 2.864-.539 0-1.07-.03-1.59-.092 2.946 1.897 6.442 3.003 10.198 3.003 12.247 0 18.94-10.125 18.94-18.94v-.865c1.03-.746 1.914-1.682 2.621-2.738z"/></svg>
+              </a>
+              <a href="https://github.com" target="_blank" class="hover:text-green-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.373 3.432 9.429 8.203 10.825.75-.145 1.035-.327 1.035-.615 0-.29-.01-1.25-.01-2.22c-3.325.723-4.025-1.616-4.025-1.616-.545-1.385-1.325-1.75-1.325-1.75-1.085-.745.08-.73.08-.73 1.205.085 1.835 1.235 1.835 1.235 1.075 1.835 2.81 1.305 3.49.995.105-.775.42-1.305.76-1.605-2.67-.3-5.46-1.335-5.46-5.945 0-1.31.465-2.385 1.235-3.225-.125-.3-.535-1.525.12-3.18 0 0 1-.325 3.3 1.235.955-.27 1.97-.405 3-.41.525.005 1.04.14 1.975.41 2.3-1.56 3.3-1.235 3.3-1.235.655 1.655.245 2.88.12 3.18.77.84 1.235 1.915 1.235 3.225 0 4.61-2.79 5.64-5.465 5.945.425.36.81 1.085.81 2.22 0 1.61-.01 2.91-.01 3.29 0 .285.285.47 1.04.615 4.775-1.4 8.205-5.45 8.205-10.825.001-6.627-5.372-12-11.999-12z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-center text-gray-500 text-sm">
+        <p>© 2025 CYBER SHELL. All Rights Reserved.</p>
+      </div>
     </footer>
 
     <script>
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        revealElements.forEach(el => observer.observe(el));
-
-        // Mobile Menu Logic
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const closeMenuButton = document.getElementById('close-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-        closeMenuButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      // Scroll Animations with Intersection Observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
         });
+      }, { threshold: 0.2 });
+      
+      document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+        observer.observe(el);
+      });
 
-        // Interactive Bot Logic
-        const chatArea = document.getElementById('chat-area');
-        const userInput = document.getElementById('user-input');
-        const sendButton = document.getElementById('send-button');
-        const typingIndicator = document.getElementById('typing-indicator');
-        const suggestionChipsContainer = document.getElementById('suggestion-chips');
-
-        const suggestionChips = [
-            { text: 'Check a Link', query: 'https://update-your-bank-details.info' },
-            { text: 'Verify News', query: 'UNESCO declared Indian national anthem as the best in the world' },
-            { text: 'Check Phone Number', query: '9876543210' },
-            { text: 'How does it work?', query: 'How do you check links?' }
-        ];
-
-        const addMessage = (text, sender) => {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `w-fit max-w-[85%] p-3 rounded-2xl break-words opacity-0 translate-y-2 transition-all duration-300 ${sender === 'user' ? 'chat-bubble-user self-end' : 'chat-bubble-bot self-start'}`;
-            text = text.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>');
-            messageDiv.innerHTML = text.replace(/\n/g, '<br>');
-            chatArea.appendChild(messageDiv);
-            setTimeout(() => {
-                messageDiv.classList.remove('opacity-0', 'translate-y-2');
-                chatArea.scrollTop = chatArea.scrollHeight;
-            }, 10);
-        };
-
-        const showTyping = () => {
-            typingIndicator.classList.remove('hidden');
-            chatArea.scrollTop = chatArea.scrollHeight;
+      // Sticky Navbar
+      window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('navbar-scrolled');
+        } else {
+          navbar.classList.remove('navbar-scrolled');
         }
+      });
+      
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-        const hideTyping = () => {
-            typingIndicator.classList.add('hidden');
-        }
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
 
-        const renderSuggestionChips = (chips) => {
-            suggestionChipsContainer.innerHTML = '';
-            chips.forEach(chip => {
-                const button = document.createElement('button');
-                button.className = 'suggestion-chip text-sm py-2 px-3 rounded-full';
-                button.textContent = chip.text;
-                button.onclick = () => {
-                    userInput.value = chip.query;
-                    processUserInput();
-                };
-                suggestionChipsContainer.appendChild(button);
-            });
-        };
-
-        const processUserInput = () => {
-            const text = userInput.value.trim();
-            if (text === '') return;
-            addMessage(text, 'user');
-            userInput.value = '';
-            suggestionChipsContainer.innerHTML = '';
-            showTyping();
-            setTimeout(() => {
-                hideTyping();
-                getBotResponse(text);
-                setTimeout(() => renderSuggestionChips(suggestionChips), 1000);
-            }, 1500 + Math.random() * 500);
-        };
-        
-        const getBotResponse = (inputText) => {
-            const lowerCaseText = inputText.toLowerCase();
-            let responseText = "⚠️ **UNVERIFIED**\nI couldn't verify this information right now. It's best to be cautious and consult official sources.";
-
-            if (lowerCaseText.includes('http') || lowerCaseText.includes('.com') || lowerCaseText.includes('.in')) {
-                if (lowerCaseText.includes('free-iphone') || lowerCaseText.includes('win-lottery') || lowerCaseText.includes('update-your-bank-details.info')) {
-                    responseText = "❌ **UNSAFE LINK DETECTED**\nThis link is flagged as a high-risk phishing site.\n\n**Analysis:** It's impersonating a bank to steal your login credentials.\n\n⚠️ **Action:** **Do NOT click this link.** Block and report the sender.";
-                } else if (lowerCaseText.includes('google.com') || lowerCaseText.includes('wikipedia.org') || lowerCaseText.includes('isro.gov.in')) {
-                    responseText = "✅ **SAFE & TRUSTED**\nThis link leads to a well-known, legitimate domain.\n\n**Analysis:** Our checks confirm this is an official site.";
-                } else {
-                    responseText = "✅ **LINK APPEARS SAFE**\nMy initial scan didn't find any immediate threats.\n\n**Recommendation:** It's likely safe to proceed, but remember to never share sensitive personal information unless you are certain of the site's authenticity.";
-                }
-            }
-            else if (lowerCaseText.includes('unesco') && lowerCaseText.includes('national anthem')) {
-                responseText = "❌ **FAKE NEWS**\nThis is a long-running hoax that resurfaces periodically.\n\n**Fact-Check:** UNESCO has repeatedly stated they do not issue such declarations. This claim has been debunked by major fact-checking organizations.";
-            } else if (lowerCaseText.includes('new currency') && lowerCaseText.includes('gps chip')) {
-                responseText = "❌ **FAKE NEWS**\nThis is a well-known piece of misinformation from 2016.\n\n**Fact-Check:** The Reserve Bank of India confirmed there are no GPS chips in the currency notes. It is not technically feasible.";
-            } else if (/\d{10}/.test(lowerCaseText)) {
-                responseText = "⚠️ **CAUTION: SPAM NUMBER**\nThis phone number has been reported by multiple users in our community for **telemarketing and potential credit card scams**.\n\n**Recommendation:** We advise blocking this number and not sharing any personal or financial information."
-            }
-            else if (lowerCaseText.includes('hello') || lowerCaseText.includes('hi')) {
-                responseText = "Hello! I'm CYBER SHELL, your digital safety assistant. How can I help you today?";
-            } else if (lowerCaseText.includes('how do you check')) {
-                responseText = "I use a multi-layered approach!\n1. **For links,** I cross-reference them with top security databases like Google Safe Browsing and VirusTotal.\n2. **For news,** I check against reports from credible fact-checkers like Alt News and use an AI model to detect patterns of misinformation.\n3. **For numbers,** I rely on our growing community database of user-reported scams.";
-            }
-            addMessage(responseText, 'bot');
-        };
-
-        sendButton.addEventListener('click', processUserInput);
-        userInput.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                processUserInput();
-            }
+      // Close mobile menu when a link is clicked
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
         });
-
-        // Initial welcome sequence for the bot
-        const startConversation = () => {
-            showTyping();
-            setTimeout(() => {
-                hideTyping();
-                addMessage("Hello! I'm the CYBER SHELL demo bot.", 'bot');
-                showTyping();
-                setTimeout(() => {
-                    hideTyping();
-                    addMessage("You can send me a link, a piece of news, or a phone number to check. Try one of the suggestions below!", 'bot');
-                    renderSuggestionChips(suggestionChips);
-                }, 1500);
-            }, 1000);
-        };
-
-        startConversation();
+      });
     </script>
-</body>
+  </body>
 </html>
-
