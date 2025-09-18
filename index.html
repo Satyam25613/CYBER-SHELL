@@ -1,388 +1,122 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CYBER SHELL - Your Digital Guardian</title>
-    <link rel="icon" type="image/x-icon" href="https://cdn.corenexis.com/view/7295311168" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: #050505;
-        color: #fff;
-        overflow-x: hidden;
-      }
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CYBER SHELL - AI Digital Safety</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-black text-gray-200 font-sans">
 
-      /* Hero Section Background Glow */
-      .hero-bg-glow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle at 70% 30%, rgba(0, 255, 128, 0.08) 0%, rgba(0, 0, 0, 0) 60%),
-                    radial-gradient(circle at 20% 80%, rgba(0, 191, 255, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
-        background-size: 200% 200%;
-        animation: hero-gradient-anim 18s ease-in-out infinite alternate;
-      }
-      @keyframes hero-gradient-anim {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-
-      /* CTA Button Glow Effect */
-      .cta-glow-btn {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 10;
-        border: 2px solid transparent;
-      }
-      .cta-glow-btn:hover {
-        transform: translateY(-2px);
-      }
-      .cta-glow-btn::before {
-        content: '';
-        position: absolute;
-        top: -100%;
-        left: -100%;
-        width: 300%;
-        height: 300%;
-        background: conic-gradient(from 0deg, #00bfff, #00ff80, #00bfff);
-        animation: cta-rotate 3s linear infinite;
-        z-index: -1;
-        opacity: 0.8;
-      }
-      .cta-glow-btn::after {
-        content: '';
-        position: absolute;
-        inset: 2px;
-        background-color: #050505;
-        border-radius: 9999px;
-        z-index: 1;
-      }
-      .cta-glow-btn span {
-        position: relative;
-        z-index: 2;
-      }
-
-      @keyframes cta-rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      /* Card Glow and Hover */
-      .card-glow {
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      }
-      .card-glow:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 30px rgba(0, 255, 128, 0.15), 0 5px 10px rgba(0, 191, 255, 0.1);
-      }
-      .card-glow::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 1rem;
-        padding: 2px;
-        background: conic-gradient(from 180deg, #00bfff, #00ff80, #00bfff);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-      }
-      .card-glow:hover::before {
-        opacity: 1;
-      }
-
-      /* Staggered Scroll Animations */
-      .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .animate-on-scroll.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
-      .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
-      .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
-      .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
-
-      /* Navbar sticky */
-      .navbar-scrolled {
-        background-color: rgba(5, 5, 5, 0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      /* Smooth separator */
-      .smooth-divider {
-        height: 1px;
-        background: linear-gradient(to right, rgba(0, 191, 255, 0.2), rgba(0, 255, 128, 0.2), rgba(0, 191, 255, 0.2));
-        margin: 4rem auto;
-      }
-    </style>
-  </head>
-  <body class="bg-black text-white">
-    <!-- Header / Navbar -->
-    <header id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300">
-      <nav class="container mx-auto flex items-center justify-between px-6">
-        <a href="#" class="flex items-center space-x-3">
-          <img src="https://cdn.corenexis.com/view/7295311168" alt="CYBER SHELL Logo" class="h-8 md:h-9 rounded-md" />
-          <span class="text-xl md:text-2xl font-bold text-white">CYBER SHELL</span>
-        </a>
-        <div class="hidden md:flex space-x-8">
-          <a href="#home" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Home</a>
-          <a href="#features" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Features</a>
-          <a href="#mission" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Mission</a>
-          <a href="#early-access" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Early Access</a>
-          <a href="#founder" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Founder</a>
-          <a href="#contact" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Contact</a>
-        </div>
-        <div class="md:hidden">
-          <button id="menu-toggle" class="text-gray-300 focus:outline-none">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </button>
-        </div>
+  <!-- Header -->
+  <header class="fixed w-full z-50 bg-black/80 backdrop-blur-lg border-b border-gray-800">
+    <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+      <img src="https://i.postimg.cc/9X97GC3C/CYBER-SHELL-1.png" alt="Cyber Shell Logo" class="h-10">
+      <nav class="hidden md:flex space-x-8 text-gray-300">
+        <a href="#features" class="hover:text-blue-400">Features</a>
+        <a href="#mission" class="hover:text-blue-400">Mission</a>
+        <a href="#founder" class="hover:text-blue-400">Founder</a>
+        <a href="#recognition" class="hover:text-blue-400">Recognition</a>
+        <a href="#contact" class="hover:text-blue-400">Contact</a>
       </nav>
-      <div id="mobile-menu" class="hidden md:hidden bg-black/90 backdrop-blur-lg py-4 transition-all duration-300 ease-in-out">
-        <div class="flex flex-col items-center space-y-4">
-          <a href="#home" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Home</a>
-          <a href="#features" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Features</a>
-          <a href="#mission" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Mission</a>
-          <a href="#early-access" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Early Access</a>
-          <a href="#founder" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Founder</a>
-          <a href="#contact" class="text-gray-300 hover:text-green-400 transition-colors duration-200">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black via-gray-900 to-black">
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6" data-aos="fade-up">
+      AI-Powered Protection Against Digital Threats
+    </h1>
+    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mb-8" data-aos="fade-up" data-aos-delay="100">
+      CYBER SHELL helps you verify Fake News, detect Phishing Links, and identify Scam Calls — making India digitally safe.
+    </p>
+    <div class="space-x-4" data-aos="fade-up" data-aos-delay="200">
+      <a href="https://satyam25613.github.io/CYBERSHELL---WM/" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">Try Free Tier</a>
+      <a href="#mission" class="px-6 py-3 border border-gray-600 hover:border-blue-500 rounded-lg font-semibold transition">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20 px-6 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-white text-center mb-12">What We Offer</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 bg-gray-900 rounded-xl border border-gray-800 hover:border-blue-500 transition" data-aos="fade-up">
+        <h3 class="text-xl font-semibold text-blue-400 mb-2">Fake News Verifier</h3>
+        <p class="text-gray-400">Instant fact-checking for viral claims with AI-backed analysis.</p>
+      </div>
+      <div class="p-6 bg-gray-900 rounded-xl border border-gray-800 hover:border-blue-500 transition" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-xl font-semibold text-blue-400 mb-2">Phishing Link Checker</h3>
+        <p class="text-gray-400">Detect dangerous URLs before you click and protect your privacy.</p>
+      </div>
+      <div class="p-6 bg-gray-900 rounded-xl border border-gray-800 hover:border-blue-500 transition" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl font-semibold text-blue-400 mb-2">Scam Call Detector</h3>
+        <p class="text-gray-400">Verify fraud numbers instantly and block malicious callers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section id="mission" class="py-20 px-6 bg-gradient-to-r from-gray-900 to-black">
+    <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-white mb-6">Our Mission & Long-Term Goals</h2>
+      <p class="text-gray-400 mb-8">We aim to empower every Indian citizen with tools that protect them against misinformation, scams, and fraud.</p>
+      <div class="grid md:grid-cols-2 gap-6 text-left">
+        <div class="p-6 bg-gray-800 rounded-lg border border-gray-700 hover:border-green-500 transition">
+          <h3 class="text-xl font-semibold text-green-400">AI WhatsApp Bot</h3>
+          <p class="text-gray-400">Seamlessly integrated fraud detection for everyday messaging.</p>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg border border-gray-700 hover:border-green-500 transition">
+          <h3 class="text-xl font-semibold text-green-400">Scam Analytics Dashboard</h3>
+          <p class="text-gray-400">Nationwide tracking of scams and fraud trends.</p>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg border border-gray-700 hover:border-green-500 transition">
+          <h3 class="text-xl font-semibold text-green-400">Fraud Detection APIs</h3>
+          <p class="text-gray-400">Enterprise-level API access for banks & businesses.</p>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg border border-gray-700 hover:border-green-500 transition">
+          <h3 class="text-xl font-semibold text-green-400">Government Partnerships</h3>
+          <p class="text-gray-400">Collaborations to build a safer digital India.</p>
         </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <main>
-      <!-- Hero Section -->
-      <section id="home" class="relative min-h-screen flex items-center justify-center text-center px-4 py-24 overflow-hidden">
-        <div class="hero-bg-glow"></div>
-        <div class="relative z-10 max-w-5xl mx-auto">
-          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400 mb-6 animate-on-scroll" data-animation-target>
-            Your AI-Powered Digital Guardian
-          </h1>
-          <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 animate-on-scroll" data-animation-target>
-            Protecting you from fake news, phishing links & scam calls, and making the digital world safer for everyone.
-          </p>
-          <a href="https://satyam25613.github.io/CYBERSHELL---WM/" class="cta-glow-btn inline-flex items-center justify-center font-semibold py-4 px-10 rounded-full text-lg animate-on-scroll" data-animation-target>
-            <span>Try Free Tier</span>
-          </a>
-        </div>
-      </section>
-      
-      <!-- Features Section -->
-      <section id="features" class="py-20 px-4">
-        <div class="container mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll" data-animation-target>Why Choose CYBER SHELL?</h2>
-          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div class="bg-[#1a1a1a] rounded-2xl p-8 card-glow animate-on-scroll" data-animation-target>
-              <div class="text-5xl mb-4 text-green-400">📰</div>
-              <h3 class="text-xl font-semibold mb-2">Fake News Verifier</h3>
-              <p class="text-gray-400">Our AI analyzes articles and social media posts to detect misinformation, helping you stay informed and safe.</p>
-            </div>
-            <div class="bg-[#1a1a1a] rounded-2xl p-8 card-glow animate-on-scroll" data-animation-target>
-              <div class="text-5xl mb-4 text-blue-400">🔗</div>
-              <h3 class="text-xl font-semibold mb-2">Phishing Link Checker</h3>
-              <p class="text-gray-400">Before you click, our system checks links against a vast database of known scams, protecting your personal data.</p>
-            </div>
-            <div class="bg-[#1a1a1a] rounded-2xl p-8 card-glow animate-on-scroll" data-animation-target>
-              <div class="text-5xl mb-4 text-green-400">📞</div>
-              <h3 class="text-xl font-semibold mb-2">Scam Call Detector</h3>
-              <p class="text-gray-400">Identify and block fraudulent calls with real-time analysis, so you never fall victim to a phone scam again.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+  <!-- Founder -->
+  <section id="founder" class="py-20 px-6 max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-white mb-6">Meet the Founder</h2>
+    <img src="https://i.ibb.co/HTJfnjw1/Untitled-Instagram-Post-4-5-20250825-022145-0000.png" alt="Founder" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-blue-600">
+    <p class="text-gray-400 max-w-2xl mx-auto mb-4">I’m <span class="text-white font-semibold">Satyam Singh</span>, Founder & CEO of CYBER SHELL, currently studying at <span class="text-blue-400">Sri Balaji University, Pune</span>. Selected by <span class="text-green-400">T-Hub Hyderabad</span>, India’s largest startup incubator, for early-stage innovation. My vision is to make India scam-proof.</p>
+    <div class="flex justify-center space-x-6 mt-4">
+      <a href="https://www.linkedin.com/in/satyam-singh25613/" target="_blank" class="text-blue-400 hover:text-blue-500">LinkedIn</a>
+      <a href="https://github.com/Satyam25613" target="_blank" class="text-blue-400 hover:text-blue-500">GitHub</a>
+    </div>
+  </section>
 
-      <div class="smooth-divider container"></div>
+  <!-- Recognition -->
+  <section id="recognition" class="py-20 px-6 bg-gray-900 text-center">
+    <h2 class="text-3xl font-bold text-white mb-6">Recognized & Supported By</h2>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+      <div class="bg-gray-800 px-8 py-6 rounded-lg border border-gray-700 text-gray-300">Sri Balaji University, Pune</div>
+      <div class="bg-gray-800 px-8 py-6 rounded-lg border border-gray-700 text-gray-300">T-Hub Hyderabad</div>
+    </div>
+  </section>
 
-      <!-- Mission & Goals -->
-      <section id="mission" class="py-20 px-4">
-        <div class="container mx-auto text-center">
-          <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll" data-animation-target>Our Mission & Vision</h2>
-            <p class="text-lg md:text-xl text-gray-300 mb-12 animate-on-scroll" data-animation-target>
-              "To make India digitally safe by empowering every citizen with AI-driven protection, ensuring a secure and trustworthy online ecosystem."
-            </p>
-            <h3 class="text-2xl font-bold mb-6 text-blue-400 animate-on-scroll" data-animation-target>Long-Term Goals</h3>
-            <div class="grid md:grid-cols-2 gap-8 text-left">
-              <div class="p-6 bg-[#1a1a1a] rounded-lg animate-on-scroll" data-animation-target>
-                <p class="text-green-400 text-lg font-semibold mb-2">AI WhatsApp Bot</p>
-                <p class="text-gray-400">A dedicated bot for citizens to instantly check facts, links, and numbers, right from their daily conversations.</p>
-              </div>
-              <div class="p-6 bg-[#1a1a1a] rounded-lg animate-on-scroll" data-animation-target>
-                <p class="text-green-400 text-lg font-semibold mb-2">Scam Analytics Dashboard</p>
-                <p class="text-gray-400">Providing real-time insights into new and emerging scams across the country, empowering proactive defense.</p>
-              </div>
-              <div class="p-6 bg-[#1a1a1a] rounded-lg animate-on-scroll" data-animation-target>
-                <p class="text-green-400 text-lg font-semibold mb-2">B2B APIs</p>
-                <p class="text-gray-400">Offering our core fraud detection technology to businesses to protect their customers at scale.</p>
-              </div>
-              <div class="p-6 bg-[#1a1a1a] rounded-lg animate-on-scroll" data-animation-target>
-                <p class="text-green-400 text-lg font-semibold mb-2">Partnerships</p>
-                <p class="text-gray-400">Collaborating with Government & NGOs to expand our reach and impact nationwide, closing the digital safety gap.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <!-- Final CTA -->
+  <section class="py-20 px-6 bg-gradient-to-b from-black via-gray-900 to-black text-center">
+    <h2 class="text-3xl font-bold text-white mb-6">Secure Your Digital Life Today</h2>
+    <a href="https://satyam25613.github.io/CYBERSHELL---WM/" target="_blank" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">Start Free Now</a>
+  </section>
 
-      <div class="smooth-divider container"></div>
+  <!-- Footer -->
+  <footer id="contact" class="bg-black border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
+    <div class="mb-4">© 2025 CYBER SHELL. All Rights Reserved.</div>
+    <div>Email: support@cybershell.in</div>
+  </footer>
 
-      <!-- Early Access Banner -->
-      <section id="early-access" class="py-20 px-4">
-        <div class="container mx-auto text-center bg-gray-900 rounded-3xl p-8 md:p-16 border border-gray-800 animate-on-scroll" data-animation-target>
-          <h2 class="text-2xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">
-            Be the first to try CYBER SHELL
-          </h2>
-          <p class="text-md md:text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            Sign up for our Free Tier now and join our mission to create a safer digital world.
-          </p>
-          <a href="https://satyam25613.github.io/CYBERSHELL---WM/" class="cta-glow-btn inline-flex items-center justify-center font-semibold py-4 px-10 rounded-full text-lg">
-            <span>Get Early Access</span>
-          </a>
-        </div>
-      </section>
+  <!-- AOS Animations -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 
-      <div class="smooth-divider container"></div>
-      
-      <!-- Founder Section -->
-      <section id="founder" class="py-20 px-4">
-        <div class="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 max-w-5xl">
-          <div class="w-full lg:w-1/3 flex justify-center animate-on-scroll" data-animation-target>
-            <img src="https://i.ibb.co/HTJfnjw1/Untitled-Instagram-Post-4-5-20250825-022145-0000.png" alt="Satyam Singh, Founder" class="rounded-full w-56 h-56 object-cover shadow-2xl border-4 border-green-400" />
-          </div>
-          <div class="w-full lg:w-2/3 text-center lg:text-left animate-on-scroll" data-animation-target>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet the Founder</h2>
-            <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
-              I’m Satyam Singh, Founder & CEO of CYBER SHELL, currently pursuing my studies at Sri Balaji University, Pune. My journey began with a vision to combat digital threats and make the online world safer for everyone. I am proud to have been selected by T-Hub Hyderabad for early-stage innovation, a significant validation of our mission and its potential to create widespread impact.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div class="smooth-divider container"></div>
-
-      <!-- Recognition Section -->
-      <section class="py-12 px-4 text-center">
-        <h3 class="text-2xl md:text-3xl font-bold text-gray-400 mb-8 animate-on-scroll" data-animation-target>Our Recognition</h3>
-        <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-          <div class="flex items-center space-x-4 animate-on-scroll" data-animation-target>
-            <span class="text-xl md:text-2xl text-blue-400 font-semibold">Sri Balaji University, Pune</span>
-          </div>
-          <div class="flex items-center space-x-4 animate-on-scroll" data-animation-target>
-            <span class="text-xl md:text-2xl text-green-400 font-semibold">T-Hub Hyderabad</span>
-            <span class="text-sm text-gray-400">(India’s biggest startup incubator)</span>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer id="contact" class="bg-[#111] py-12 px-4 border-t border-gray-800">
-      <div class="container mx-auto flex flex-col md:flex-row justify-between items-start text-center md:text-left">
-        <div class="mb-8 md:mb-0">
-          <a href="#" class="flex items-center justify-center md:justify-start space-x-3 mb-4">
-            <img src="https://cdn.corenexis.com/view/7295311168" alt="CYBER SHELL Logo" class="h-8 rounded-md" />
-            <span class="text-lg font-bold">CYBER SHELL</span>
-          </a>
-          <p class="text-gray-400 text-sm max-w-xs">Empowering citizens with AI-driven protection against digital threats. Making India digitally safe.</p>
-        </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 w-full md:w-auto text-left">
-          <div>
-            <h4 class="font-semibold text-white mb-3">Quick Links</h4>
-            <ul class="space-y-2 text-sm">
-              <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
-              <li><a href="#mission" class="text-gray-400 hover:text-white transition-colors">Our Mission</a></li>
-              <li><a href="#founder" class="text-gray-400 hover:text-white transition-colors">Founder</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-semibold text-white mb-3">Resources</h4>
-            <ul class="space-y-2 text-sm">
-              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-semibold text-white mb-3">Connect</h4>
-            <div class="flex justify-start space-x-4 text-gray-400">
-              <a href="https://linkedin.com" target="_blank" class="hover:text-blue-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.765s.784-1.764 1.75-1.764 1.75.79 1.75 1.764c0 .975-.784 1.765-1.75 1.765zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </a>
-              <a href="https://twitter.com" target="_blank" class="hover:text-blue-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.593 0-6.495 2.902-6.495 6.495 0 .509.057 1.006.169 1.488-5.39-2.7-10.191-5.7-13.407-10.742-.563.961-.888 2.083-.888 3.284 0 2.26.96 4.254 2.451 5.424-2.24-.072-4.103-.728-5.83-1.609v.081c0 3.195 2.274 5.86 5.293 6.471-.52.141-1.07.21-1.637.21-.4 0-.79-.045-1.171-.115.845 2.62 3.288 4.524 6.173 4.576-2.285 1.79-5.163 2.864-8.283 2.864-.539 0-1.07-.03-1.59-.092 2.946 1.897 6.442 3.003 10.198 3.003 12.247 0 18.94-10.125 18.94-18.94v-.865c1.03-.746 1.914-1.682 2.621-2.738z"/></svg>
-              </a>
-              <a href="https://github.com" target="_blank" class="hover:text-green-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.373 3.432 9.429 8.203 10.825.75-.145 1.035-.327 1.035-.615 0-.29-.01-1.25-.01-2.22c-3.325.723-4.025-1.616-4.025-1.616-.545-1.385-1.325-1.75-1.325-1.75-1.085-.745.08-.73.08-.73 1.205.085 1.835 1.235 1.835 1.235 1.075 1.835 2.81 1.305 3.49.995.105-.775.42-1.305.76-1.605-2.67-.3-5.46-1.335-5.46-5.945 0-1.31.465-2.385 1.235-3.225-.125-.3-.535-1.525.12-3.18 0 0 1-.325 3.3 1.235.955-.27 1.97-.405 3-.41.525.005 1.04.14 1.975.41 2.3-1.56 3.3-1.235 3.3-1.235.655 1.655.245 2.88.12 3.18.77.84 1.235 1.915 1.235 3.225 0 4.61-2.79 5.64-5.465 5.945.425.36.81 1.085.81 2.22 0 1.61-.01 2.91-.01 3.29 0 .285.285.47 1.04.615 4.775-1.4 8.205-5.45 8.205-10.825.001-6.627-5.372-12-11.999-12z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mt-8 text-center text-gray-500 text-sm">
-        <p>© 2025 CYBER SHELL. All Rights Reserved.</p>
-      </div>
-    </footer>
-
-    <script>
-      // Scroll Animations with Intersection Observer
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.2 });
-      
-      document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-        observer.observe(el);
-      });
-
-      // Sticky Navbar
-      window.addEventListener('scroll', () => {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-          navbar.classList.add('navbar-scrolled');
-        } else {
-          navbar.classList.remove('navbar-scrolled');
-        }
-      });
-      
-      // Mobile Menu Toggle
-      const menuToggle = document.getElementById('menu-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-
-      menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-
-      // Close mobile menu when a link is clicked
-      document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-        });
-      });
-    </script>
-  </body>
+</body>
 </html>
